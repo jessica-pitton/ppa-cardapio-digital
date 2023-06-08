@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catálogo de Produtos</title>
+</head>
+<body>
+    <form action="/add_to_cart" method="post">
+        {% for produto in produtos %}
+            <div>
+                <h2>{{ produto.nome }}</h2>
+                <p>{{ produto.descricao }}</p>
+                <p>Preço: R$ {{ produto.preco }}</p>
+
+                {% for foto in produto.imagens.all %}
+                    <img src="{{ foto.imagem }}" alt="{{ produto.nome }}">
+                {% endfor %}
+                
+                <form action="/add_to_cart" method="post">
+                    <input type="hidden" name="product_name" value="{}">
+                    <input type="hidden" name="product_price" value="{}">
+                    <input type="submit" value="Adicionar ao carrinho">
+                </form>
+            </div>
+        {% endfor %}
+    </form>
