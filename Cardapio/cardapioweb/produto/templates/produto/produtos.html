@@ -4,22 +4,23 @@
     <title>Catálogo de Produtos</title>
 </head>
 <body>
-    <form action="/add_to_cart" method="post">
-        {% for produto in produtos %}
-            <div>
-                <h2>{{ produto.nome }}</h2>
-                <p>{{ produto.descricao }}</p>
-                <p>Preço: R$ {{ produto.preco }}</p>
+    {% for produto in produtos %}
+        <div>
+            <h2>{{ produto.nome }}</h2>
+            <p>{{ produto.descricao }}</p>
+            <p>Preço: R$ {{ produto.preco }}</p>
+            <img src="{{ produto.imagens.first.imagem }}" alt="{{ produto.nome }}" style="width:200px;">
+            {% comment %} {% for foto in produto.imagens.all %} {% endcomment %}
+                {% comment %} <img src="{{ foto.imagem }}" alt="{{ produto.nome }}" style="width:200px;"> {% endcomment %}
+            {% comment %} {% endfor %} {% endcomment %}
+            
 
-                {% for foto in produto.imagens.all %}
-                    <img src="{{ foto.imagem }}" alt="{{ produto.nome }}">
-                {% endfor %}
-                
-                <form action="/add_to_cart" method="post">
-                    <input type="hidden" name="product_name" value="{}">
-                    <input type="hidden" name="product_price" value="{}">
-                    <input type="submit" value="Adicionar ao carrinho">
+            <form method="POST" action="{{ adicionar_carrinho_url }}">
+                {% csrf_token %}
+                <input type="hidden" name="produto_id" value="{{ produto.id }}">
+                <input type="number" name="quantidade" value="1" min="1">
+                <button type="submit">Adicionar ao carrinho</button>
                 </form>
-            </div>
-        {% endfor %}
-    </form>
+        </div>
+    {% endfor %}
+</body>
