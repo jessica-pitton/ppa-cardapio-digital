@@ -4,12 +4,6 @@ from django.template import loader
 from .models import Cliente
 from .forms import ClienteForm
 
-def novo(request):
-    
-    template = loader.get_template("cliente/novo.html")
-    context = {}
-    return HttpResponse(template.render(context, request))
-
 
 def pagina_sucesso(request):
     return render(request, 'cliente/pagina_sucesso.html')
@@ -24,4 +18,4 @@ def cadastro_cliente(request):
     else:
         form = ClienteForm()
 
-    return render(request, 'cliente/novo.html', {'form': form})
+    return render(request, 'cliente', {'form': form})
