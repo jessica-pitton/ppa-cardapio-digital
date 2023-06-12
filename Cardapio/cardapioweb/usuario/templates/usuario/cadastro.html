@@ -2,35 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de usuários</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'usuario/css/style.css' %}">
+    
+    <title>Sabor Nordestino</title>
 </head>
 <body>
+    <header class="content">
+        <div class="Logo">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+            <h3>Sabor Nordestino</h3>
 
-<form method="post">
-    {% csrf_token %}
+        </div>
+        <div class="caixa"></div>
+        <nav>
+            <ul class = "list-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/produto">Cardápio</a></li>
+                <li><a href="/carrinho">Carrinho</a></li>
+                <li><a href="/usuario/login">Login</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+        </div>
+    </header>
 
-    <div class="form-group">
-        {{form_usuario.username.errors}}
-        <label>Username: </label>
-        {{form_usuario.username}}
-    </div>
 
-    <div class="form-group">
-        {{form_usuario.password1.errors}}
-        <label>Senha: </label>
-        {{form_usuario.password1}}
-    </div>
+    <form method="post">
+        {% csrf_token %}
 
-    <div class="form-group">
-        {{form_usuario.password2.errors}}
-        <label>Confirmação de senha: </label>
-        {{form_usuario.password2}}
-    </div>
+        <section class="cardapio"   id="cardapio">
+            <div class="login ">
+                <div class="form-group">
+                    {{form_usuario.username.errors}}
+                    <label>Username: </label>
+                    {{form_usuario.username}}
+                </div>
 
-    <div class="form-group">
-        <input type="submit" value="Cadastrar" class="btn btn-primary">
-    </div>
-</form>
+                <div class="form-group">
+                    {{form_usuario.password1.errors}}
+                    <label>Senha: </label>
+                    {{form_usuario.password1}}
+                </div>
+
+                <div class="form-group">
+                    {{form_usuario.password2.errors}}
+                    <label>Confirmação de senha: </label>
+                    {{form_usuario.password2}}
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary">
+                </div>
+            </div>
+        </section>
+    </form>
 
 </body>
 </html>

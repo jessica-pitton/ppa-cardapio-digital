@@ -15,13 +15,11 @@ def cadastrar_usuario(request):
 
 
 def index(request):
-    return render(request, 'usuario/pagina_sucesso.html', {'username': request.user})
+    return render(request, '/produtousuario/pagina_sucesso.html', {'username': request.user})
 
     
-def logar_usuario(request):
-    
-    print()
-    
+def realizar_login(request):
+       
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -31,7 +29,7 @@ def logar_usuario(request):
             next = request.GET.get('next')
            
             if next is None:
-                next = 'index'
+                next = '/produto'
             
             return redirect(next)
         else:
@@ -42,6 +40,6 @@ def logar_usuario(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('logar_usuario')
+    return redirect('login')
     
     

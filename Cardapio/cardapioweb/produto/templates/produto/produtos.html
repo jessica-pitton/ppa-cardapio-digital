@@ -1,26 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Catálogo de Produtos</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'usuario/css/style.css' %}">
+    
+    <title>Sabor Nordestino</title>
 </head>
 <body>
-    {% for produto in produtos %}
-        <div>
-            <h2>{{ produto.nome }}</h2>
-            <p>{{ produto.descricao }}</p>
-            <p>Preço: R$ {{ produto.preco }}</p>
-            <img src="{{ produto.imagens.first.imagem }}" alt="{{ produto.nome }}" style="width:200px;">
-            {% comment %} {% for foto in produto.imagens.all %} {% endcomment %}
-                {% comment %} <img src="{{ foto.imagem }}" alt="{{ produto.nome }}" style="width:200px;"> {% endcomment %}
-            {% comment %} {% endfor %} {% endcomment %}
-            
+    <header class="content">
+        <div class="Logo">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+            <h3>Sabor Nordestino</h3>
 
-            <form method="POST" action="{{ adicionar_carrinho_url }}">
-                {% csrf_token %}
-                <input type="hidden" name="produto_id" value="{{ produto.id }}">
-                <input type="number" name="quantidade" value="1" min="1">
-                <button type="submit">Adicionar ao carrinho</button>
-                </form>
         </div>
-    {% endfor %}
+        <div class="caixa"></div>
+        <nav>
+            <ul class = "list-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/produto">Cardápio</a></li>
+                <li><a href="/carrinho">Carrinho</a></li>
+                <li><a href="/usuario/login">Login</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+        </div>
+    </header>
+    
+
+   
+    <section class="cardapio"   id="cardapio">
+        
+        <h2>Cardápio</h2>
+
+        <div class="itens-cardapio">
+            {% for produto in produtos %}
+                <div class="item">
+                    <img src="{{ produto.imagens.first.imagem }}" alt="{{ produto.nome }}">
+                    <div class="info">
+                        <h3>{{ produto.nome }}</h3>
+                        <h4>{{ produto.descricao }}<span>R$ {{ produto.preco }}</span></h4>
+                        
+                        <form method="POST" action="{{ adicionar_carrinho_url }}">
+                            {% csrf_token %}
+                            <input type="hidden" name="produto_id" value="{{ produto.id }}">
+                            <input type="number" name="quantidade" value="1" min="1">
+                            <button type="submit" class="enviar">Adicionar</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <h4>Desenvolvido por Jéssica Pitton Sousa</h4>
+    </footer>
+    
+    <script src="{% static 'usuario/js/script.js' %}"></script>
 </body>
+</html>

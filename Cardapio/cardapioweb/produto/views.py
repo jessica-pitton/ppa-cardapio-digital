@@ -4,7 +4,7 @@ from django.urls import reverse
 from .models import Produto
 
 @login_required
-def listar_produtos(request):
+def produtos(request):
 
     produtos = Produto.objects.all()
     adicionar_carrinho_url = reverse('pedidos:adicionar_carrinho')

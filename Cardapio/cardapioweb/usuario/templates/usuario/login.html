@@ -2,27 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'usuario/css/style.css' %}">
+    
+    <title>Sabor Nordestino</title>
 </head>
 <body>
-<form method="post">
-    {% csrf_token %}
+    <header class="content">
+        <div class="Logo">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+            <h3>Sabor Nordestino</h3>
 
-    <div class="form-group">
-        {{form_login.username.errors}}
-        <label>Username: </label>
-        {{form_login.username}}
-    </div>
+        </div>
+        <div class="caixa"></div>
+        <nav>
+            <ul class = "list-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/produto">Cardápio</a></li>
+                <li><a href="/carrinho">Carrinho</a></li>
+                <li><a href="/usuario/login">Login</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+        </div>
+    </header>
+    
+    <form method="post">
+        {% csrf_token %}
 
-    <div class="form-group">
-        {{form_login.password.errors}}
-        <label>Senha: </label>
-        {{form_login.password}}
-    </div>
+        <section class="cardapio"   id="cardapio">
+            <div class="login ">
+                
+                <h2>Login</h2>
+                {{form_login.username.errors}}
+                <label for="email">E-mail</label>
+                {{form_login.username}}
 
-    <div class="form-group">
-        <input type="submit" value="Enviar" class="btn btn-primary">
-    </div>
+                {{form_login.password.errors}}
+                <label for="password">Password: </label>
+                {{form_login.password}}
+                
+                <div class="link">
+                    <a href="#">Esqueceu a senha</a>
+                    <a href="/usuario/cadastrar_usuario">Cadastrar</a>
+                </div>
+                <button class="enviar">Enviar</button>
+            </div>
+        </section>
 </form>
+
+<footer>
+    <h4>Desenvolvido por Jéssica Pitton Sousa</h4>
+</footer>
+
+<script src="{% static 'usuario/js/script.js' %}"></script>
+
 </body>
 </html>
