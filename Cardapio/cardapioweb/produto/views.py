@@ -10,7 +10,8 @@ def produtos(request):
     adicionar_carrinho_url = reverse('pedidos:adicionar_carrinho')
     context = {
         'produtos': produtos,
-        'adicionar_carrinho_url': adicionar_carrinho_url
+        'adicionar_carrinho_url': adicionar_carrinho_url,
+        'username': request.user
     }
     
     return render(request, 'produto/produtos.html', context)

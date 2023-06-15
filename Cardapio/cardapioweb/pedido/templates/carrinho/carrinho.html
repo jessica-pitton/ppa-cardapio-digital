@@ -42,22 +42,22 @@
    
     <section class="cardapio"   id="cardapio">
         
-        <h2>Cardápio</h2>
+        <h2>Carrinho</h2>
 
         <div class="itens-cardapio">
-            {% for produto in produtos %}
+            {% for item in carrinho.itens.all %}
                 <div class="item">
-                    <img src="{{ produto.imagens.first.imagem }}" alt="{{ produto.nome }}">
+                    <img src="{{ item.produto.imagens.first.imagem }}" alt="{{ item.produto.nome }}">
                     <div class="info">
-                        <h3>{{ produto.nome }}</h3>
-                        <h4>{{ produto.descricao }}<span>R$ {{ produto.preco }}</span></h4>
+                        <h3>{{ item.produto.nome }}</h3>
+                        <h4>{{ item.produto.descricao }}<span>R$ {{ item.produto.preco }}</span></h4>
                         
-                        <form method="POST" action="{{ adicionar_carrinho_url }}">
+                        {% comment %} <form method="POST" action="{{ adicionar_carrinho_url }}">
                             {% csrf_token %}
                             <input type="hidden" name="produto_id" value="{{ produto.id }}">
                             <input type="number" name="quantidade" value="1" min="1">
                             <button type="submit" class="enviar">Adicionar</button>
-                        </form>
+                        </form> {% endcomment %}
                     </div>
                 </div>
             {% endfor %}
