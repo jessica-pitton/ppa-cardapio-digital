@@ -8,3 +8,11 @@ menuToggle.addEventListener('click',() => {
     menuContent.classList.toggle('on',show);
     show=!show;
 })
+function fecharCaixa() {
+    var caixa = document.getElementById('caixa-compra');
+    caixa.style.display = 'none';
+  }
+  $(document).ready(function() {
+    $('#cpf').inputmask('999.999.999-99');
+  });
+  

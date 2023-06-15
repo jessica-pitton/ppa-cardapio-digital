@@ -229,9 +229,15 @@ footer{
     padding: 7rem;
     display: flex;
     flex-direction: column;
+ 
+}
+.login p{
+    font-size: 1.5rem;
 }
 .login h2{
-    font-size: 3rem;
+
+    padding-top: 2%;
+    font-size: 2.5rem;
     align-self: flex-start;
     margin-top: 3rem;
     margin-bottom: 3rem;
@@ -247,7 +253,7 @@ footer{
 
 }
 .login input{
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     height: 3rem;
     border: none;
     border-bottom: 1px solid rgb(29, 28, 28);
@@ -294,35 +300,226 @@ footer{
     background-color: #ffc506;
     transition: all 500ms ease-in-out;
 }
+.carrinho{
+    width: 100%;
+    height: auto;
+    background-color: rgb(246, 238, 230);
+
+}
+.carrinho .cabecalho-carrinho{
+    display: flex;
+    justify-content: center;
+
+}
+.carrinho .cabecalho-carrinho button{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    font-size: 3rem;
+    line-height: 40%;
+    color:#333333;
+    background:#ddddde50;
+    border: 2px solid #ddddde;
+    border-radius:8px;
+    transition: 4s;        
+}
+.carrinho .cabecalho-carrinho button:hover{
+    color: #fcf3f3;
+    background-color:#5e5252 ;
+    border-color: #333333;
+   
+}
+.carrinho .cabecalho-carrinho h3{
+    padding-top: 5%;
+    font-size: 3rem;
+    align-items: center;
+    margin-top: 1%;  
+    color: rgb(29, 28, 28);
+    border-bottom: 2px solid rgb(48,48,48); 
+    justify-content: center;
+    display:grid;
+    position: relative;
+}
+
+.carrinho .carrinho-item{
+    position: relative;
+    display: flex;
+    width: 75%;
+    margin: 2%;
+    background: #fcf3f3;
+    border-radius: 8px;
+    box-shadow: 0 4px 18px #333333;
+    justify-content: center;
+
+   
+}
+
+.carrinho .carrinho-item .imagem{
+    width: 200px;
+    height:100px ;
+    display: flex;
+    justify-content: center;
+    
+} 
+.carrinho .carrinho-item img{
+    width: 150px;
+    object-fit: contain;
+    margin-right: 1rem;
+    justify-content: center;
+    
+}
+.carrinho .carrinho-item .info{
+    width: 90%;
+    padding: 10px;  
+    justify-content: center;
+       
+}
 
 
+.carrinho .carrinho-item h4{
+    color: #333333;
+    font-size:2rem;
+    text-align: left;
+    padding-top: 10px;
+}
 
-@media (max-width: 1200px) {
-    .content{
+.carrinho .carrinho-item .preco{
+    color: #333333;
+    font-size: 2rem;
+    text-align: right;
+      
+   
+}
+.carrinho .carrinho-item .contador{
+    position: absolute;
+    right: 15px;
+    margin-bottom: 20px;
+}
+.carrinho .carrinho-item .contador i{
+    cursor: pointer;
+    width: 25px;
+    height: 35px;
+    font-size:0.75rem ;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 8px 8px 0 0;
+}
+.carrinho .carrinho-item .contador span{
+    margin-top:6px;
+    font-size:1.5rem;
+    color: #333333;
+
+}
+.carrinho .pagar{
+    font: 500 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px 0;
+    color: #fff;
+    background: rgb(180, 92, 92);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.carrinho .pagar:hover{
+    background: #333333;
+}
+.caixa-compra {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .caixa-compra p {
+    margin-bottom: 10px;
+  }
+  
+  .caixa-compra button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+.voltar{
+   
+    font-size: 2rem;
+}
+
+  
+
+
+@media(max-width: 1200px) {
+.content{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 12%;
-        padding-left:0px ;
+        height: 11%;
+        padding-left:1px ;
+        padding-top: 1px;
+       
     }
-    .login{
+.login{
         flex-direction: column;
         justify-content: center;
-        align-items: center;        
+        align-items: center;     
+        height: 8%;   
     }
-    .login h2{
-        font-size: 3rem;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-    }
+
+.login p{
+    font-size: 1.5rem;
+}
+.carrinho .cabecalho-carrinho h3{
+    padding-top: 7%;
+    font-size: 2.5rem;
+    align-items: center;
+    margin-top: 1%;  
+    color: rgb(29, 28, 28);
+    border-bottom: 2px solid rgb(48,48,48); 
+    justify-content: center;
+    display:grid;
+    position: relative;
+}     
 
 }
 
+
 @media(max-width:992px) {
-    html{
-        font-size: 50%;
-    
+
+html{
+        font-size: 50%;    
+}
+
+.login{
+   
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;     
+    height: 9%;   
+}
+
+
+.content{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 11%;      
+       
+    }
+.login h2{
+        padding-top: 8%;
+        font-size: 3rem;
+        align-self: center;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        color: rgb(29, 28, 28);
+        border-bottom: 2px solid rgb(48,48,48);    
 }
 }
 @media(max-width:768px){
@@ -399,8 +596,26 @@ footer{
     .content.on .menu-toggle .three {
         transform: rotate(-45deg) translate(19px, -6px);
     }
-
-
+    .carrinho .cabecalho-carrinho h3{
+        padding-top: 9%;
+        font-size: 3rem;
+        align-items: center;
+        margin-top: 1%;  
+        color: rgb(29, 28, 28);
+        border-bottom: 2px solid rgb(48,48,48); 
+        justify-content: center;
+        display:grid;
+        position: relative;
+    }
+    .login h2{
+        padding-top: 12%;
+        font-size: 3rem;
+        align-self: center;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        color: rgb(29, 28, 28);
+        border-bottom: 2px solid rgb(48,48,48);    
+}
 
 }
 
@@ -430,6 +645,17 @@ footer{
          justify-content: center;
          align-items: center;
      }
+     .carrinho .cabecalho-carrinho h3{
+        padding-top: 15%;       
+        font-size: 2.5rem;
+        align-items: center;
+        margin-top: 1%;  
+        color: rgb(29, 28, 28);
+        border-bottom: 2px solid rgb(48,48,48); 
+        justify-content: center;
+        display:grid;
+        position: relative;
+    }
     
 
 }

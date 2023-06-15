@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     {% load static %}
     <link rel="stylesheet" href="{% static 'usuario/css/style.css' %}">
     
@@ -21,14 +22,12 @@
             <ul class = "list-menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/produto">Cardápio</a></li>
-                <li><a href="/carrinho">Carrinho</a></li>
+                <li><a href="/pedido/carrinho">Carrinho</a></li>
                 {% if username is None %}
                 <li><a href="/usuario/login">Login</a></li>
                 {% else %}
                 <li><a href="/pedidos">Olá {{username}}</a>(<a href="/usuario/logout">Sair</a>)</li>
                 {% endif %}
-
-
             </ul>
         </nav>
         <div class="menu-toggle">
@@ -37,33 +36,48 @@
             <div class="three"></div>
         </div>
     </header>
+
+
+    <div id="caixa-compra">
+        <p>Item adicionado ao carrinho!</p>
+        <button onclick="fecharCaixa()">Continuar comprando</button>
+    </div>
     
-
    
-    <section class="cardapio"   id="cardapio">
+    <div class="carrinho">
+        <div class="cabecalho-carrinho">
+            <botton>
+                <i class="bx bx-chevron-left"></i>                    
+            </botton>
+            <h3>Meu Carrinho</h3>
+        </div>  
         
-        <h2>Carrinho</h2>
-
-        <div class="itens-cardapio">
+        <ul>
             {% for item in carrinho.itens.all %}
-                <div class="item">
-                    <img src="{{ item.produto.imagens.first.imagem }}" alt="{{ item.produto.nome }}">
-                    <div class="info">
-                        <h3>{{ item.produto.nome }}</h3>
-                        <h4>{{ item.produto.descricao }}<span>R$ {{ item.produto.preco }}</span></h4>
-                        
-                        {% comment %} <form method="POST" action="{{ adicionar_carrinho_url }}">
-                            {% csrf_token %}
-                            <input type="hidden" name="produto_id" value="{{ produto.id }}">
-                            <input type="number" name="quantidade" value="1" min="1">
-                            <button type="submit" class="enviar">Adicionar</button>
-                        </form> {% endcomment %}
+            <li class="carrinho-item">
+                <div class="imagem">
+                    <img src="/produto/{{ item.produto.imagens.first.imagem }}" alt="{{ item.produto.nome }}">
+                </div>                                                  
+                <div class="info">  
+                    <h4>{{ item.produto.nome }}</h4>
+                    <p>{{ item.produto.descricao }}</p>
+
+                    <div class="preco">
+                        <p>R$ {{ item.produto.preco }}</p>
+                        <div class="contador">
+                            <i class="bx bx-minus"></i>
+                            <span>{{ item.quantidade }}</span>
+                            <i class="bx bx-plus"></i>
+                        </div>
                     </div>
                 </div>
+                    
+            </li>
             {% endfor %}
+        </ul>
 
-            </div>
-        </div>
+        <a class="voltar" href="index.html">Voltar</a>
+        <button class="pagar">Pedir</button>
     </section>
 
     
