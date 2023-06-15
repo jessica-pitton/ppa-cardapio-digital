@@ -19,6 +19,10 @@ def carrinho(request):
     
     return render(request, 'carrinho/carrinho.html', context) 
 
+@login_required
+def remover_item_carrinho(request, item_id):
+    ItemCarrinho.objects.get(id=item_id).delete()
+    return redirect('/pedido/carrinho')
 
 @login_required
 def adicionar_carrinho(request):
@@ -43,4 +47,4 @@ def adicionar_carrinho(request):
         item.save()    
         carrinho.save()        
                             
-    return redirect('carrinho')
+    return redirect('/pedido/carrinho')

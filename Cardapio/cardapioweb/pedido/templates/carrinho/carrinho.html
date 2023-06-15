@@ -64,19 +64,18 @@
 
                     <div class="preco">
                         <p>R$ {{ item.produto.preco }}</p>
-                        <div class="contador">
-                            <i class="bx bx-minus"></i>
-                            <span>{{ item.quantidade }}</span>
-                            <i class="bx bx-plus"></i>
-                        </div>
+                        <span>Quantidade:</span>
+                        <input type="number" name="quantidade" value="{{ item.quantidade }}" min="1">
                     </div>
+                    <a href="/pedido/carrinho/{{item.id}}/remover">remover</a>
+
                 </div>
                     
             </li>
             {% endfor %}
         </ul>
 
-        <a class="voltar" href="index.html">Voltar</a>
+        <a class="voltar" href="/produto">continuar comprando</a>
         <button class="pagar">Pedir</button>
     </section>
 
