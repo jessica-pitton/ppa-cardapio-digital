@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from produto.models import Produto
 from cliente.models import Cliente
+from decimal import Decimal
 
 
 class Carrinho(models.Model):
@@ -18,6 +19,7 @@ class ItemCarrinho(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE, null=True)
     quantidade = models.IntegerField(default=1)
     valor = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     carrinho = models.ForeignKey(Carrinho, on_delete=models.CASCADE, related_name="itens", null=True)
 
     def __str__(self) -> str:
@@ -31,12 +33,17 @@ class Pedido(models.Model):
     status = models.CharField(max_length=50, default="Pendente")
     observacao = models.TextField(null=True)
 
+    def adiciona_ao_total(self, valor):
+        self.total += float(valor)
+         
     def __str__(self) -> str:
         return f"pedido={self.id}, data={self.criacao}, total={self.total}, cliente={self.cliente}"
 
 class ItemPedido(models.Model):
-    produto = models.ManyToManyField(Produto)
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE, null=True)
     quantidade = models.IntegerField(default=1)
+    valor = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, related_name="itens", null=True)
 
     def __str__(self) -> str:

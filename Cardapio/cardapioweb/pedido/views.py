@@ -37,12 +37,14 @@ def adicionar_carrinho(request):
         quantidade = int(request.POST.get('quantidade'))
         produto = Produto.objects.get(id=int(request.POST.get('produto_id')))
         preco = produto.preco
+        total = float(quantidade * preco)
 
         item = ItemCarrinho(
             carrinho = carrinho, 
             produto = produto,
             quantidade = quantidade,
-            valor = preco
+            valor = preco,
+            total = total
         )
         item.save()    
         carrinho.save()        
@@ -68,7 +70,6 @@ def criar_pedido(request, carrinho_id):
         carrinho = Carrinho.objects.get(id=carrinho_id)
         
         pedido = _novo_pedido(carrinho)
-        pedido = Pedido(cliente=carrinho.cliente)
         carrinho.delete()
 
         return redirect(f"/pedido/{pedido.id}")
@@ -77,20 +78,23 @@ def criar_pedido(request, carrinho_id):
 
 def _novo_pedido(carrinho) -> Pedido:
 
-    pedido = Pedido(carrinho.cliente)
-    total_pedido = 0.0
-    itens_pedido = []
+    pedido = Pedido(cliente=carrinho.cliente)
+    pedido.save()
+    total: float = 0
 
     for item_carrinho in carrinho.itens.all():
         item_pedido = ItemPedido(
             produto=item_carrinho.produto,
             quantidade=item_carrinho.quantidade,
+            total = float(item_carrinho.quantidade * item_carrinho.produto.preco),
+            pedido=pedido,
         )
-        itens_pedido.append(item_pedido)
-        total_pedido += (item_carrinho.quantidade * item_carrinho.produto.preco)
+        item_pedido.save()
+        total += item_pedido.total
 
-    pedido.total = total_pedido
-    pedido.itens = itens_pedido
+    pedido = Pedido.objects.get(id=pedido.id)
+    pedido.total = total
     pedido.save()
+    return pedido
 
 

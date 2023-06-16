@@ -47,9 +47,14 @@
         </div>  
         
         <ul>
-            <h3>Status do pedido: {{ pedido.status }}</h3>
-            <h4>Data do pedido: <span>{{ pedido.criacao }}</h4>
-            <h4>Total: <span>R$ {{ pedido.total }}</h4>
+            <li class="carrinho-item">
+                <div class="info">
+                    <h4>Status: {{ pedido.status }}</h4>
+                    <h4>Data: <span>{{ pedido.criacao }}</h4>
+                    <h4>Total do pedido: <span>R$ {{ pedido.total }}</h4>
+                </div>
+            </li>
+
             {% for item in pedido.itens.all %}
             <li class="carrinho-item">
                 <div class="imagem">
@@ -60,8 +65,9 @@
                     <p>{{ item.produto.descricao }}</p>
 
                     <div class="preco">
-                        <p>R$ {{ item.produto.preco }}</p>
                         <span>Quantidade: {{ item.quantidade }}</span>
+                        <p>R$ {{ item.produto.preco }}</p> 
+                        <p>Total: R$ {{ item.total }}</p>
                     </div>
                 </div>
                     
