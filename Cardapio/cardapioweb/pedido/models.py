@@ -15,9 +15,8 @@ class Carrinho(models.Model):
 
 
 class ItemCarrinho(models.Model):
-    produto = models.ForeignKey(Produto, on_delete=models.DO_NOTHING, null=True)
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE, null=True)
     quantidade = models.IntegerField(default=1)
-    observacao = models.TextField(null=True)
     valor = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     carrinho = models.ForeignKey(Carrinho, on_delete=models.CASCADE, related_name="itens", null=True)
 
@@ -30,6 +29,7 @@ class Pedido(models.Model):
     alteracao = models.DateTimeField("data de alteração", default=timezone.now)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     status = models.CharField(max_length=50, default="Pendente")
+    observacao = models.TextField(null=True)
 
     def __str__(self) -> str:
         return f"pedido={self.id}, data={self.criacao}, total={self.total}, cliente={self.cliente}"
@@ -37,7 +37,6 @@ class Pedido(models.Model):
 class ItemPedido(models.Model):
     produto = models.ManyToManyField(Produto)
     quantidade = models.IntegerField(default=1)
-    observacao = models.TextField(null=True)
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, related_name="itens", null=True)
 
     def __str__(self) -> str:

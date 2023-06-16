@@ -36,12 +36,6 @@
             <div class="three"></div>
         </div>
     </header>
-
-
-    <div id="caixa-compra">
-        <p>Item adicionado ao carrinho!</p>
-        <button onclick="fecharCaixa()">Continuar comprando</button>
-    </div>
     
    
     <div class="carrinho">
@@ -49,11 +43,14 @@
             <botton>
                 <i class="bx bx-chevron-left"></i>                    
             </botton>
-            <h3>Meu Carrinho</h3>
+            <h3>Detalhes do Pedido</h3>
         </div>  
         
         <ul>
-            {% for item in carrinho.itens.all %}
+            <h3>Status do pedido: {{ pedido.status }}</h3>
+            <h4>Data do pedido: <span>{{ pedido.criacao }}</h4>
+            <h4>Total: <span>R$ {{ pedido.total }}</h4>
+            {% for item in pedido.itens.all %}
             <li class="carrinho-item">
                 <div class="imagem">
                     <img src="/produto/{{ item.produto.imagens.first.imagem }}" alt="{{ item.produto.nome }}">
@@ -64,23 +61,14 @@
 
                     <div class="preco">
                         <p>R$ {{ item.produto.preco }}</p>
-                        <span>Quantidade:</span>
-                        <input type="number" name="quantidade" value="{{ item.quantidade }}" min="1">
+                        <span>Quantidade: {{ item.quantidade }}</span>
                     </div>
-                    <a href="/pedido/carrinho/{{item.id}}/remover">remover</a>
-
                 </div>
                     
             </li>
             {% endfor %}
         </ul>
 
-        <a class="voltar" href="/produto">continuar comprando</a>
-        <form method="POST" action="/pedido/carrinho/{{ carrinho.id }}">
-            {% csrf_token %}
-            <input type="text" name="observacao" />
-            <button class="pagar">Pedir</button>
-        </form>
     </section>
 
     
