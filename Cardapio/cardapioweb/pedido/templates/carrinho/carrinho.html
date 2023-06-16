@@ -66,6 +66,8 @@
                         <p>R$ {{ item.produto.preco }}</p>
                         <span>Quantidade:</span>
                         <input type="number" name="quantidade" value="{{ item.quantidade }}" min="1">
+                        <p>Total R$ {{ item.total }}</p>
+
                     </div>
                     <a href="/pedido/carrinho/{{item.id}}/remover">remover</a>
 
