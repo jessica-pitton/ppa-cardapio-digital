@@ -7,9 +7,16 @@ class Cliente(models.Model):
     nome = models.CharField(max_length=200)
     cpf = models.CharField(max_length=15)
     email = models.CharField(max_length=200)
+    celular = models.CharField(max_length=200, null=True)
     criacao = models.DateTimeField("data de criacão", default=timezone.now)
     alteracao = models.DateTimeField("data de alteração", default=timezone.now)
     
  
     def __str__(self) -> str:
-        return "Nome = " + self.nome + "CPF: " + self.cpf + "ID: " + str(self.id)
+        return "id: " + str(self.id) \
+            + ", Nome: " + self.nome \
+            + ", CPF: " + self.cpf \
+            + ", email: " + self.email \
+            + ", data criacao: " + str(self.criacao) \
+            + ", data alteracao: " + str(self.alteracao)
+    

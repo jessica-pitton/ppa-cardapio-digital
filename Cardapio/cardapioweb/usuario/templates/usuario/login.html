@@ -19,7 +19,7 @@
         <div class="caixa"></div>
         <nav>
             <ul class = "list-menu">
-                <li><a href="/produto">Cardápio</a></li>
+                <li><a href="">Cardápio</a></li>
                 <li><a href="/pedido/carrinho">Carrinho</a></li>
                 <li><a href="/usuario/login">Login</a></li>
             </ul>
@@ -38,6 +38,15 @@
             <div class="login ">
                 
                 <h2>Login</h2>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
                 {{form_login.username.errors}}
                 <label for="email">E-mail</label>
                 {{form_login.username}}

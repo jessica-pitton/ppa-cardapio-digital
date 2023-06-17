@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6/jquery.inputmask.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'usuario/css/style.css' %}">
     
@@ -19,7 +21,7 @@
         <div class="caixa"></div>
         <nav>
             <ul class = "list-menu">
-                <li><a href="/produto">Cardápio</a></li>
+                <li><a href="">Cardápio</a></li>
                 <li><a href="/pedido/carrinho">Carrinho</a></li>
                 <li><a href="/usuario/login">Login</a></li>
             </ul>
@@ -31,34 +33,46 @@
         </div>
     </header>
 
-
     <form method="post">
         {% csrf_token %}
-
         <section class="cardapio"   id="cardapio">
             <div class="login ">
-                <div class="form-group">
-                    {{form_usuario.username.errors}}
-                    <label>Username: </label>
-                    {{form_usuario.username}}
-                </div>
+                
+                <h2>Cadastro</h2>
+                
+                
 
-                <div class="form-group">
-                    {{form_usuario.password1.errors}}
-                    <label>Senha: </label>
-                    {{form_usuario.password1}}
-                </div>
+                {{form_usuario.nome.errors}}
+                <label for="nome">Nome</label>
+                {{form_usuario.nome}}
 
-                <div class="form-group">
-                    {{form_usuario.password2.errors}}
-                    <label>Confirmação de senha: </label>
-                    {{form_usuario.password2}}
-                </div>
+                {{form_usuario.cpf.errors}}
+                <label for="cpf">CPF</label>
+                {{form_usuario.cpf}}
 
-                <div class="form-group">
-                    <input type="submit" value="Cadastrar" class="btn btn-primary">
-                </div>
+                {{form_usuario.username.errors}}
+                <label>Email: </label>
+                {{form_usuario.username}}
+                
+                {{form_usuario.celular.errors}}
+                <label for="celular">Celular</label>
+                {{form_usuario.celular}}
+
+                {{form_usuario.password1.errors}}
+                <label for="password">Senha: </label>
+                {{form_usuario.password1}}
+                
+                {{form_usuario.password2.errors}}
+                <label for="connfirPassword">Confirme sua senha: </label>
+                {{form_usuario.password2}}
+
+
+                <div class="link">
+                    <a href="recuperar.html">Esqueceu a senha</a>
+                    <a href="formulario.html">Cadastrar</a>
             </div>
+            <button class="enviar">Enviar</button>
+
         </section>
     </form>
 

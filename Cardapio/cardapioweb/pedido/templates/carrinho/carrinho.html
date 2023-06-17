@@ -20,7 +20,7 @@
         <div class="caixa"></div>
         <nav>
             <ul class = "list-menu">
-                <li><a href="/produto">Cardápio</a></li>
+                <li><a href="">Cardápio</a></li>
                 <li><a href="/pedido/carrinho">Carrinho</a></li>
                 {% if username is None %}
                 <li><a href="/usuario/login">Login</a></li>
@@ -76,7 +76,7 @@
             {% endfor %}
         </ul>
 
-        <a class="voltar" href="/produto">continuar comprando</a>
+        <a class="voltar" href="">continuar comprando</a>
         <form method="POST" action="/pedido/carrinho/{{ carrinho.id }}">
             {% csrf_token %}
             <input type="text" name="observacao" />
