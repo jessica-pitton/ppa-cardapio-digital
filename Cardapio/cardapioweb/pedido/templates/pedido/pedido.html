@@ -20,7 +20,7 @@
         <div class="caixa"></div>
         <nav>
             <ul class = "list-menu">
-                <li><a href="">Cardápio</a></li>
+                <li><a href="/produto">Cardápio</a></li>
                 <li><a href="/pedido/carrinho">Carrinho</a></li>
                 {% if username is None %}
                 <li><a href="/usuario/login">Login</a></li>
@@ -48,7 +48,7 @@
         <ul>
             <li class="carrinho-item">
                 <div class="info">
-                    <h4>Status: {{ pedido.status }}</h4>
+                    <h4>Status: {{ status }}</h4>
                     <h4>Data: <span>{{ pedido.criacao }}</h4>
                     <h4>Total do pedido: <span>R$ {{ pedido.total }}</h4>
                 </div>

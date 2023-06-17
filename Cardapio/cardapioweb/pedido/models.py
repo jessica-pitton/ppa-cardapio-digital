@@ -3,6 +3,7 @@ from django.utils import timezone
 from produto.models import Produto
 from cliente.models import Cliente
 from decimal import Decimal
+from enum import Enum
 
 
 class Carrinho(models.Model):
@@ -25,13 +26,19 @@ class ItemCarrinho(models.Model):
     def __str__(self) -> str:
         return f"item={self.id}, quantidade={self.quantidade}, produto={self.produto}"
 
+class StatusPedido(Enum):
+    PENDENTE = 'Pendente'
+    EM_PREPARO = 'Em Preparo'
+    CONCLUIDO = 'Concluido'
+    CANCELADO = 'Cancelado'
+
 class Pedido(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     criacao = models.DateTimeField("data de criacão", default=timezone.now)
     alteracao = models.DateTimeField("data de alteração", default=timezone.now)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    status = models.CharField(max_length=50, default="Pendente")
-    observacao = models.TextField(null=True)
+    status = models.CharField(max_length=50, choices=[(s.name, s.value) for s in StatusPedido], default=StatusPedido.PENDENTE.name)
+    observacao = models.TextField(null=True, blank=True)
 
     def adiciona_ao_total(self, valor):
         self.total += float(valor)

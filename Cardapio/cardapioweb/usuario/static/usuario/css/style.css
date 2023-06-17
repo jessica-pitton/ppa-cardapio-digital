@@ -209,8 +209,8 @@ html{
 }
 
 .itens-cardapio img{
-    width: 100%;
-    height: 200%;
+    width: 350px;
+    height: 230px;
 }
 .itens-cardapio div{
     background-color: #5e5252;
@@ -349,10 +349,9 @@ footer{
    
 }
 .carrinho .cabecalho-carrinho h3{
-    padding-top: 5%;
     font-size: 3rem;
     align-items: center;
-    margin-top: 1%;  
+    margin-top: 5%;  
     color: rgb(29, 28, 28);
     border-bottom: 2px solid rgb(48,48,48); 
     justify-content: center;
@@ -495,10 +494,9 @@ footer{
     font-size: 1.5rem;
 }
 .carrinho .cabecalho-carrinho h3{
-    padding-top: 7%;
     font-size: 2.5rem;
     align-items: center;
-    margin-top: 1%;  
+    margin-top: 7%;  
     color: rgb(29, 28, 28);
     border-bottom: 2px solid rgb(48,48,48); 
     justify-content: center;
@@ -605,6 +603,10 @@ html{
     .itens-cardapio .info h4{
         margin-left: 12rem;
     }
+    .itens-cardapio img{
+        width: 100%;
+        height: 200%;
+    }
     .content.on .menu-toggle .one {
         transform: rotate(45deg) translate(7px, -8px);
     }
@@ -616,10 +618,9 @@ html{
         transform: rotate(-45deg) translate(19px, -6px);
     }
     .carrinho .cabecalho-carrinho h3{
-        padding-top: 9%;
         font-size: 3rem;
         align-items: center;
-        margin-top: 1%;  
+        margin-top: 6%;  
         color: rgb(29, 28, 28);
         border-bottom: 2px solid rgb(48,48,48); 
         justify-content: center;
@@ -665,10 +666,9 @@ html{
          align-items: center;
      }
      .carrinho .cabecalho-carrinho h3{
-        padding-top: 15%;       
         font-size: 2.5rem;
         align-items: center;
-        margin-top: 1%;  
+        margin-top: 15%;  
         color: rgb(29, 28, 28);
         border-bottom: 2px solid rgb(48,48,48); 
         justify-content: center;

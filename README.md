@@ -4,6 +4,14 @@ Cardápio Digital
 Pré- requisitos
 
 Instalar Python3.
+
+PS C:\Users\henri\Documents\GitHub\ppa-cardapio-digital\Cardapio\cardapioweb> python -m venv venv         
+PS C:\Users\henri\Documents\GitHub\ppa-cardapio-digital\Cardapio\cardapioweb> .\venv\Scripts\activate.bat
+
+ python -m pip install django
+ python -m pip install django-crispy-forms
+python -m pip install Pillow
+
 Instalar os Pips abaixo.
 
 asgiref                3.7.2  

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from produto.models import Produto
 from cliente.models import Cliente
-from .models import Carrinho, ItemCarrinho, Pedido, ItemPedido
+from .models import Carrinho, ItemCarrinho, Pedido, ItemPedido, StatusPedido
 
 @login_required
 def carrinho(request):
@@ -13,8 +13,7 @@ def carrinho(request):
     
     context = {
             'carrinho': carrinho,
-            # 'produtos_url': reverse('produto:produtos'),
-            'username': request.user
+            'username': request.user.cliente.nome
         }
     
     return render(request, 'carrinho/carrinho.html', context) 
@@ -57,7 +56,8 @@ def mostrar_pedido(request, pedido_id):
     pedido = Pedido.objects.get(id=pedido_id)
     context = {
             'pedido': pedido,
-            'username': request.user
+            'status': getattr(StatusPedido, pedido.status).value,
+            'username': request.user.cliente.nome
         }
     
     return render(request, 'pedido/pedido.html', context)

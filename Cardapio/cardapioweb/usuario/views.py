@@ -21,7 +21,7 @@ def cadastrar_usuario(request):
 
 
 def index(request):
-    return render(request, '/usuario/login', {'username': request.user})
+    return render(request, '/usuario/login', {'username': request.user.cliente.nome})
 
     
 def realizar_login(request):
@@ -36,7 +36,7 @@ def realizar_login(request):
             next = request.GET.get('next')
            
             if next is None:
-                next = ''
+                next = '/produto'
             
             return redirect(next)
         else:

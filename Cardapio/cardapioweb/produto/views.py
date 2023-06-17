@@ -7,11 +7,11 @@ from .models import Produto
 def produtos(request):
 
     produtos = Produto.objects.all()
-    adicionar_carrinho_url = reverse('pedidos:adicionar_carrinho')
+    adicionar_carrinho_url = reverse('pedido:adicionar_carrinho')
     context = {
         'produtos': produtos,
         'adicionar_carrinho_url': adicionar_carrinho_url,
-        'username': request.user
+        'username': request.user.cliente.nome
     }
     
     return render(request, 'produto/produtos.html', context)
