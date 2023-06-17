@@ -41,6 +41,7 @@ def realizar_login(request):
             return redirect(next)
         else:
             form_login = AuthenticationForm()
+            messages.error(request, "Dados de acesso inválidos!")
     else:
         form_login = AuthenticationForm()
     return render(request, 'usuario/login.html', {'form_login': form_login})
@@ -48,5 +49,5 @@ def realizar_login(request):
 def logout_user(request):
     logout(request)
     return redirect('login')
-    
+
     
