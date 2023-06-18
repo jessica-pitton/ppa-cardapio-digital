@@ -28,6 +28,7 @@ html{
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
+    font-size: 1.5rem;
 }
 .alert-success {
     color: #155724;
@@ -323,7 +324,12 @@ footer{
     width: 100%;
     height: auto;
     background-color: rgb(246, 238, 230);
-
+}
+.carrinho .mensagem-carrinho{
+    display: flex;
+    width: auto;
+    justify-content: center;
+    margin-top: 1em;
 }
 .carrinho .cabecalho-carrinho{
     display: flex;

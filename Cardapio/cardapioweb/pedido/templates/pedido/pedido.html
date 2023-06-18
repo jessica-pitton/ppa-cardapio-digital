@@ -38,13 +38,31 @@
     
    
     <div class="carrinho">
+
         <div class="cabecalho-carrinho">
+
             <botton>
                 <i class="bx bx-chevron-left"></i>                    
             </botton>
             <h3>Detalhes do Pedido</h3>
+
+            
         </div>  
-        
+        <div class="mensagem-carrinho">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% elif message.tags == 'success' %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
         <ul>
             <li class="carrinho-item">
                 <div class="info">

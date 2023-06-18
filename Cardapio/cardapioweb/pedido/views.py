@@ -4,6 +4,7 @@ from django.urls import reverse
 from produto.models import Produto
 from cliente.models import Cliente
 from .models import Carrinho, ItemCarrinho, Pedido, ItemPedido, StatusPedido
+from django.contrib import messages
 
 @login_required
 def carrinho(request):
@@ -71,6 +72,8 @@ def criar_pedido(request, carrinho_id):
         
         pedido = _novo_pedido(carrinho)
         carrinho.delete()
+
+        messages.success(request, "Pedido realizado com sucesso!")
 
         return redirect(f"/pedido/{pedido.id}")
     else:
