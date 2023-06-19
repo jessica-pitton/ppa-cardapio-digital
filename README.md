@@ -16,7 +16,7 @@ Execute no terminal os comandos abaixo:
 
 ```python -m pip install django-crispy-forms```
 
-```python -m pip install Pillow```
+```python3 -m pip install Pillow```
 
 ### Executando o projeto
 

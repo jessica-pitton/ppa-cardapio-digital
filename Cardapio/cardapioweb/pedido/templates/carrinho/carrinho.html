@@ -68,9 +68,10 @@
                     
             </li>
             {% endfor %}
+            <a class="voltar" href="/produto">continuar comprando</a>
         </ul>
 
-        <a class="voltar" href="/produto">continuar comprando</a>
+        
         <form method="POST" action="/pedido/carrinho/{{ carrinho.id }}">
             {% csrf_token %}
             <input type="text" name="observacao" />

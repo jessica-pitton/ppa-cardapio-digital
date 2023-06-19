@@ -50,6 +50,7 @@ html{
     background-color: rgb(180, 92, 92);
     position: fixed;
     padding-left: 30rem;
+    z-index: 10;
 }
 .Logo{
     width: 70px;
@@ -149,18 +150,20 @@ html{
 }
 .cardapio{
     width: 100vw;
-    height: 97vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: rgba(180, 92, 92,0.5);
+    position: absolute;
+    margin-top: 70px;
 }
+
 .cardapio h2{
     font-size: 5rem;
     color: aliceblue;
     text-transform: uppercase;
-
+    margin-top: 20px;
 }
 .itens-cardapio {
     width: 80%;
@@ -322,9 +325,14 @@ footer{
 }
 .carrinho{
     width: 100%;
-    height: auto;
     background-color: rgb(246, 238, 230);
+    position: absolute;
+    margin-top: 70px;
 }
+.carrinho ul{
+    min-height: 97vh;
+}
+
 .carrinho .mensagem-carrinho{
     display: flex;
     width: auto;
