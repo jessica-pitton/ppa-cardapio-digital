@@ -33,6 +33,16 @@ def realizar_login(request):
         usuario = authenticate(request, username=username, password=password)
         if usuario is not None:
             login(request, usuario)
+
+            try:
+                request.user.cliente
+            except:
+                logout(request)
+                form_login = AuthenticationForm()
+                messages.error(request, "Dados de acesso inválidos!")
+                return render(request, 'usuario/login.html', {'form_login': form_login})
+
+
             next = request.GET.get('next')
            
             if next is None:
