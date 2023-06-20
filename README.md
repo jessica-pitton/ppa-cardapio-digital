@@ -27,10 +27,19 @@ Execute as migrations do projeto:
 
 ```python manage.py makemigrations  ```
 
-```python manage.py migrate ```
+python manage.py migrate ```
 
 **Rodando o projeto**
 
 ```python manage.py runserver```
 
+## Links
+
+Segue o link para o video no youtube https://youtu.be/6blSHJc9UdQ
+Link para o cardápio
+http://ec2-34-203-227-163.compute-1.amazonaws.com:8000/produto/
+link para o Admin
+http://ec2-34-203-227-163.compute-1.amazonaws.com:8000/admin
+```Usuário: admin```
+```Senha: admin0509@```
 
